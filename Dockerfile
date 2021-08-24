@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN install.r shiny
 
-RUN echo "local(options(shiny.port = 3838, shiny.host = '0.0.0.0'))" > /usr/lib/R/etc/Rprofile.site
+RUN echo "local(options(shiny.port = 8080, shiny.host = '45.56.78.8'))" > /usr/lib/R/etc/Rprofile.site
 
 RUN addgroup --system app \
     && adduser --system --ingroup app app
@@ -26,6 +26,6 @@ RUN chown app:app -R /home/app
 
 USER app
 
-EXPOSE 3838
+EXPOSE 8000
 
 CMD ["R", "-e", "shiny::runApp('/home/app')"]
